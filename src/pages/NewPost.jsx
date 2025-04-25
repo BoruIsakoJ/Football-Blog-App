@@ -50,8 +50,8 @@ const NewPost = () => {
     };
 
     return (
-        <div className="container my-5" style={{ minHeight: "100vh" }}>
-            <h2 className="mb-4 text-center">Create New Blog Post</h2>
+        <div className="container my-5">
+            <h2 className="mb-4  fw-bold text-secondary text-center">Create New Blog Post</h2>
             <form onSubmit={handleSubmit} className="card p-4 shadow-lg">
                 <div className="mb-3">
                     <label className="form-label">Title</label>

@@ -33,7 +33,7 @@ const NewPost = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        fetch('http://localhost:3000/posts', {
+        fetch('https://football-blogs-json-server.onrender.com/api/posts', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({

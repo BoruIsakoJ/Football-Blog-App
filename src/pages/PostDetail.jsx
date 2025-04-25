@@ -33,7 +33,7 @@ const PostDetail = () => {
     const handleDelete = () => {
         const confirmDelete = window.confirm("Are you sure you want to delete this post?");
         if (confirmDelete) {
-            fetch(`http://localhost:3000/posts/${id}`, {
+            fetch(`https://football-blogs-json-server.onrender.com/api/posts/${id}`, {
                 method: "DELETE"
             })
                 .then(() => {

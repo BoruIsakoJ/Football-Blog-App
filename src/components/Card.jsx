@@ -6,9 +6,11 @@ function Card({ post }) {
 
   // Function to get the first 20 words of the content
   const getFirst20Words = (content) => {
-    const words = content.split(' ');
+    const plainText = content.replace(/<[^>]+>/g, ''); // Removes HTML tags
+    const words = plainText.split(/\s+/); // Splits by any whitespace
     return words.slice(0, 20).join(' ') + (words.length > 20 ? '...' : '');
   };
+  
 
   return (
     <div className="card shadow-sm rounded-2 mb-4 mx-auto" style={{ width: '20rem', height:"500px" }}>

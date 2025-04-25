@@ -11,7 +11,7 @@ const PostDetail = () => {
     const [hasLiked, setHasLiked] = useState(false); // Track if the user has liked the post
 
     useEffect(() => {
-        fetch(`http://localhost:3000/posts/${id}`)
+        fetch(`https://football-blogs-json-server.onrender.com/api/posts/${id}`)
             .then(res => {
                 if (!res.ok) {
                     throw new Error('Post not found');
@@ -52,7 +52,7 @@ const PostDetail = () => {
         setHasLiked(!hasLiked); // Toggle like status
 
         // Update the likes on the server
-        fetch(`http://localhost:3000/posts/${id}`, {
+        fetch(`https://football-blogs-json-server.onrender.com/api/posts/${id}`, {
             method: "PATCH", // Using PATCH to update the likes count
             headers: {
                 'Content-Type': 'application/json'
@@ -68,7 +68,7 @@ const PostDetail = () => {
                     localStorage.removeItem(`liked-${id}`);
                 }
             })
-       
+
     };
 
 
@@ -76,9 +76,9 @@ const PostDetail = () => {
     if (error) return <div className="p-6 text-danger">{error}</div>;
 
     return (
-        <div className="container py-5" style={{minWidth:"100vw", minHeight:"100vh"}} >
-            <div className="card shadow-lg p-4" style={{maxWidth:"80vw", display:"block", margin:"auto"}}>
-
+        <div className="container py-5" style={{ minWidth: "100vw", minHeight: "100vh" }} >
+            <div className="card shadow-lg p-4" style={{ maxWidth: "80vw", display: "block", margin: "auto" }}>
+    
                 <img
                     src={post.image}
                     alt={post.title}
@@ -87,17 +87,18 @@ const PostDetail = () => {
                         height: 'auto',
                         maxHeight: '500px',
                         objectFit: 'cover',
-                        maxWidth: '100%' 
+                        maxWidth: '100%',
                     }}
                 />
-                <h1 className="card-title text-start text-primary display fw-bold mb-5" style={{ fontSize: '2.5rem' }}>
+                <h1 className="card-title text-start text-primary display fw-bold mb-5">
                     {post.title}
                 </h1>
-                <p className="text-center text-muted mb-4 d-flex justify-content-between" style={{ fontSize: '1.2rem' }}>
-                  <span><strong>By:</strong> {post.author}</span>  <span><strong>Date:</strong> {post.date}</span> 
+                <p className="text-center text-muted mb-4 d-flex justify-content-between" >
+                    <span><strong>By:</strong> {post.author}</span>  <span><strong>Date:</strong> {post.date}</span>
                 </p>
-                <p className="card-text text-gray-600" style={{ fontSize: '1.5rem', color: '#6c757d' }}>
-                    {post.content}
+                <p className="card-text text-gray-600" style={{ fontSize: '1rem', color: '#6c757d' }}>
+                    <div dangerouslySetInnerHTML={{ __html: post.content }} />
+
                 </p>
 
                 <div className="mt-5 text-center d-flex justify-content-between">
@@ -109,9 +110,9 @@ const PostDetail = () => {
                     >
                         <i
                             className={`bi ${hasLiked ? 'bi-heart-fill' : 'bi-heart'}`}
-                            style={{ fontSize: '1.5rem', color: hasLiked ? 'red' : '#6c757d' }}
+                            style={{ fontSize: '1.2rem', color: hasLiked ? 'red' : '#6c757d' }}
                         ></i>
-                        <span className="m-2">{likes}</span> {/* Display the number of likes */}
+                        <span style={{fontSize:"1.1rem"}} className="m-2">{likes}</span> {/* Display the number of likes */}
                     </button>
 
                     {/* Delete Button */}

@@ -8,7 +8,7 @@ const Home = () => {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3000/posts")
+    fetch("https://football-blogs-json-server.onrender.com/api/posts")
       .then(res => res.json())
       .then(data => setPosts(data))
   }, []);
